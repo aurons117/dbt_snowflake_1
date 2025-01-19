@@ -1,0 +1,33 @@
+
+version: 2
+
+models:
+    - name: stg_customers
+      description: "Staging customers data"
+      columns:
+          - name: customer_id
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+
+    - name: stg_orders
+      description: "Staging orders data"
+      columns:
+          - name: order_id
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+
+          - name: status
+            description: "Order Stauts"
+            tests:
+                - accepted_values:
+                    values:
+                      - "completed"
+                      - "return_pending"
+                      - "returned"
+                      - "shipped"
+                      - "placed"
+
